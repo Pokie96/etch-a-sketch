@@ -6,6 +6,6 @@ for(i=0; i<256; i++){
         rowNumber += 1;
     }
     let divEl = document.createElement('div');
-    divEl.className = `div-el-row${rowNumber}`;
+    divEl.classList.add(`div-el-row${rowNumber}`, 'div-el');
     container.appendChild(divEl);
 }
