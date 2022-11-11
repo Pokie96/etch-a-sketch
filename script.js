@@ -29,8 +29,8 @@ function createCells(cellNumber){
     }
 }
 
-let userRowPrompt = prompt("How many rows would you like in your grid?");
-let userColumnPrompt = prompt("How many columns would you like in your grid?");
+// let userRowPrompt = prompt("How many rows would you like in your grid?");
+// let userColumnPrompt = prompt("How many columns would you like in your grid?");
 
 createGrid(userRowPrompt, userColumnPrompt);
 
@@ -54,3 +54,6 @@ cells.forEach(function(element){
         element.style.backgroundColor = 'black';
     })
 })
+
+//Declare variable so we can select our reset button
+const resetButton = document.getElementById('reset-button');
