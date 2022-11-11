@@ -29,25 +29,25 @@ function createCells(cellNumber){
     }
 }
 
-createGrid(100);
+createGrid(16);
 
 //Declare a variable to select all the cells of our grid
 const cells = document.querySelectorAll('.cell');
 
 //Function generates a random colour and returns it
-function randomColour(){
-    var letters = '0123456789ABCDEF';
-    var color = '#';
-    for (var i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-}
+// function randomColour(){
+//     var letters = '0123456789ABCDEF';
+//     var color = '#';
+//     for (var i = 0; i < 6; i++) {
+//         color += letters[Math.floor(Math.random() * 16)];
+//     }
+//     return color;
+// }
 
 
 //Loops through our cells adding an event listener to them
 cells.forEach(function(element){
     element.addEventListener('mouseover', function(){
-        element.style.backgroundColor = randomColour();
+        element.style.backgroundColor = 'black';
     })
 })
