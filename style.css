@@ -26,3 +26,8 @@ body{
     height:100%;
     width:100%;
 }
+
+#reset-button{
+    margin-top: 20px;
+    font-size: 20px;
+}
