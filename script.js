@@ -3,9 +3,9 @@ const container = document.getElementById('container');
 const rows = document.getElementsByClassName('row');
 
 //Function creates a grid of a given size (eg. 16 = 16x16 grid)
-function createGrid(gridSize){
-    createRows(gridSize);
-    createCells(gridSize);
+function createGrid(rowNum, cellNum){
+    createRows(rowNum);
+    createCells(cellNum);
 }
 
 //Creates the rows of our grid appending them to our container
@@ -29,7 +29,10 @@ function createCells(cellNumber){
     }
 }
 
-createGrid(16);
+let userRowPrompt = prompt("How many rows would you like in your grid?");
+let userColumnPrompt = prompt("How many columns would you like in your grid?");
+
+createGrid(userRowPrompt, userColumnPrompt);
 
 //Declare a variable to select all the cells of our grid
 const cells = document.querySelectorAll('.cell');
