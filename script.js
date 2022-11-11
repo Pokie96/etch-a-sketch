@@ -29,13 +29,13 @@ function createCells(cellNumber){
     }
 }
 
-// let userRowPrompt = prompt("How many rows would you like in your grid?");
-// let userColumnPrompt = prompt("How many columns would you like in your grid?");
+let userRowPrompt = prompt("How many rows would you like in your grid?");
+let userColumnPrompt = prompt("How many columns would you like in your grid?");
 
 createGrid(userRowPrompt, userColumnPrompt);
 
 //Declare a variable to select all the cells of our grid
-const cells = document.querySelectorAll('.cell');
+let cells = document.querySelectorAll('.cell');
 
 //Function generates a random colour and returns it
 // function randomColour(){
@@ -48,6 +48,27 @@ const cells = document.querySelectorAll('.cell');
 // }
 
 
+//Declare variable so we can select our reset button
+const resetButton = document.getElementById('reset-button');
+
+
+//Event listener for our reset button which removes current rows and
+//prompts for new values from user to create new grid
+resetButton.addEventListener('click', () => {
+    while(container.firstChild){
+        container.removeChild(container.lastChild);
+    }
+    userRowPrompt = prompt("How many rows would you like in your grid?");
+    userColumnPrompt = prompt("How many columns would you like in your grid?");
+    createGrid(userRowPrompt, userColumnPrompt);
+    cells = document.querySelectorAll('.cell');
+    cells.forEach(function(element){
+        element.addEventListener('mouseover', function(){
+            element.style.backgroundColor = 'black';
+        })
+    })
+})
+
 //Loops through our cells adding an event listener to them
 cells.forEach(function(element){
     element.addEventListener('mouseover', function(){
@@ -55,5 +76,3 @@ cells.forEach(function(element){
     })
 })
 
-//Declare variable so we can select our reset button
-const resetButton = document.getElementById('reset-button');
