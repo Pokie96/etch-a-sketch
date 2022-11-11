@@ -1,5 +1,6 @@
 const container = document.getElementById('container');
-const rows = document.getElementsByClassName('row')
+const rows = document.getElementsByClassName('row');
+
 
 function createGrid(gridSize){
     createRows(gridSize);
@@ -25,6 +26,12 @@ function createCells(cellNumber){
     }
 }
 
-createGrid(16);
+createGrid(25);
 
+const cells = document.querySelectorAll('.cell');
 
+cells.forEach(function(element){
+    element.addEventListener('mouseover', function(){
+        element.style.backgroundColor = 'blue';
+    })
+})
