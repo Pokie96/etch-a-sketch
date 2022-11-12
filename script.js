@@ -29,23 +29,27 @@ function createCells(cellNumber){
     }
 }
 
+//Initially assigns variables to users input when page loads
 let userRowPrompt = prompt("How many rows would you like in your grid?");
+userRowPrompt = checkUserRowInput(userRowPrompt);
 let userColumnPrompt = prompt("How many columns would you like in your grid?");
+userColumnPrompt = checkUserColumnInput(userColumnPrompt);
 
+//Creates our grid given our user's input
 createGrid(userRowPrompt, userColumnPrompt);
 
 //Declare a variable to select all the cells of our grid
 let cells = document.querySelectorAll('.cell');
 
 //Function generates a random colour and returns it
-// function randomColour(){
-//     var letters = '0123456789ABCDEF';
-//     var color = '#';
-//     for (var i = 0; i < 6; i++) {
-//         color += letters[Math.floor(Math.random() * 16)];
-//     }
-//     return color;
-// }
+function randomColour(){
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
 
 
 //Declare variable so we can select our reset button
@@ -59,20 +63,43 @@ resetButton.addEventListener('click', () => {
         container.removeChild(container.lastChild);
     }
     userRowPrompt = prompt("How many rows would you like in your grid?");
+    userRowPrompt = checkUserRowInput(userRowPrompt);
     userColumnPrompt = prompt("How many columns would you like in your grid?");
+    userColumnPrompt = checkUserColumnInput(userColumnPrompt);
     createGrid(userRowPrompt, userColumnPrompt);
     cells = document.querySelectorAll('.cell');
     cells.forEach(function(element){
+        let shade = 0
         element.addEventListener('mouseover', function(){
-            element.style.backgroundColor = 'black';
+            shade += 0.2;
+            element.style.backgroundColor = `rgba(0, 0, 0, ${shade})`;
         })
     })
 })
 
 //Loops through our cells adding an event listener to them
 cells.forEach(function(element){
+    let shade = 0
     element.addEventListener('mouseover', function(){
-        element.style.backgroundColor = 'black';
+        shade += 0.2;
+        element.style.backgroundColor = `rgba(0, 0, 0, ${shade})`;
     })
 })
 
+//Function to check our user row inputs are below 100
+function checkUserRowInput(userInput){
+    while (userInput > 100){
+        alert('You can not exceed 100!');
+        userInput = prompt("How many rows would you like in your grid?");
+    }
+    return userInput;
+};
+
+//Function to check our user column inputs are below 100
+function checkUserColumnInput(userInput){
+    while (userInput > 100){
+        alert('You can not exceed 100!');
+        userInput = prompt("How many columns would you like in your grid?");
+    }
+    return userInput;
+};
