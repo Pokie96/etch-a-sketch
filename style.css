@@ -8,8 +8,8 @@ body{
 }
 
 #container{
-    width: 30%;
-    height: 50%;
+    width: 800px;
+    height: 800px;
     display: flex;
     flex-direction: column;
     border: solid black;
@@ -28,6 +28,6 @@ body{
 }
 
 #reset-button{
-    margin-top: 20px;
+    margin-bottom: 20px;
     font-size: 20px;
 }
