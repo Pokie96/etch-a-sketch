@@ -71,13 +71,6 @@ resetButton.addEventListener('click', () => {
     createGrid(userRowPrompt, userColumnPrompt);
     cells = document.querySelectorAll('.cell');
     drawOverGrid();
-    // cells.forEach(function(element){
-    //     let shade = 0
-    //     element.addEventListener('mouseover', function(){
-    //         shade += 0.2;
-    //         element.style.backgroundColor = `rgba(0, 0, 0, ${shade})`;
-    //     })
-    // })
 })
 
 //Loops through our cells adding an event listener to them
