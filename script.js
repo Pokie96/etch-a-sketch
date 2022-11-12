@@ -41,6 +41,8 @@ createGrid(userRowPrompt, userColumnPrompt);
 //Declare a variable to select all the cells of our grid
 let cells = document.querySelectorAll('.cell');
 
+drawOverGrid()
+
 //Function generates a random colour and returns it
 function randomColour(){
     var letters = '0123456789ABCDEF';
@@ -68,6 +70,18 @@ resetButton.addEventListener('click', () => {
     userColumnPrompt = checkUserColumnInput(userColumnPrompt);
     createGrid(userRowPrompt, userColumnPrompt);
     cells = document.querySelectorAll('.cell');
+    drawOverGrid();
+    // cells.forEach(function(element){
+    //     let shade = 0
+    //     element.addEventListener('mouseover', function(){
+    //         shade += 0.2;
+    //         element.style.backgroundColor = `rgba(0, 0, 0, ${shade})`;
+    //     })
+    // })
+})
+
+//Loops through our cells adding an event listener to them
+function drawOverGrid (){
     cells.forEach(function(element){
         let shade = 0
         element.addEventListener('mouseover', function(){
@@ -75,17 +89,7 @@ resetButton.addEventListener('click', () => {
             element.style.backgroundColor = `rgba(0, 0, 0, ${shade})`;
         })
     })
-})
-
-//Loops through our cells adding an event listener to them
-cells.forEach(function(element){
-    let shade = 0
-    element.addEventListener('mouseover', function(){
-        shade += 0.2;
-        element.style.backgroundColor = `rgba(0, 0, 0, ${shade})`;
-    })
-})
-
+};
 //Function to check our user row inputs are below 100
 function checkUserRowInput(userInput){
     while (userInput > 100){
