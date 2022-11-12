@@ -43,6 +43,7 @@ body{
     padding-top: 15px;
     padding-bottom: 15px;
     cursor: grab;
+    border-radius: 10px;
 }
 
 #reset-button:hover{
