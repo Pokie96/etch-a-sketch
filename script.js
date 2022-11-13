@@ -89,8 +89,6 @@ shadeButton.addEventListener('click', () => {
 
 
 
-
-
 //Event listener for our reset button which removes current rows and
 //prompts for new values from user to create new grid
 resetButton.addEventListener('click', () => {
