@@ -1,6 +1,10 @@
 //Declare our variables globally to be used in our functions
 const container = document.getElementById('container');
 const rows = document.getElementsByClassName('row');
+const resetButton = document.getElementById('reset-button');
+const solidButton = document.getElementById('solid-button');
+const colourfulButton = document.getElementById('colourful-button');
+const shadeButton = document.getElementById('shade-button');
 
 //Function creates a grid of a given size (eg. 16 = 16x16 grid)
 function createGrid(rowNum, cellNum){
@@ -35,13 +39,16 @@ userRowPrompt = checkUserRowInput(userRowPrompt);
 let userColumnPrompt = prompt("How many columns would you like in your grid?");
 userColumnPrompt = checkUserColumnInput(userColumnPrompt);
 
+
 //Creates our grid given our user's input
 createGrid(userRowPrompt, userColumnPrompt);
+
 
 //Declare a variable to select all the cells of our grid
 let cells = document.querySelectorAll('.cell');
 
 drawOverGrid()
+
 
 //Function generates a random colour and returns it
 function randomColour(){
@@ -54,8 +61,34 @@ function randomColour(){
 }
 
 
-//Declare variable so we can select our reset button
-const resetButton = document.getElementById('reset-button');
+//Variables for which style will be active when drawing
+let solid = false;
+let colourful = false;
+let shade = false;
+let styleChosen;
+
+
+//Event listeners for our drawing style buttons
+solidButton.addEventListener('click', () => {
+    solid = true;
+    colourful= false;
+    shade = false;
+});
+
+colourfulButton.addEventListener('click', () => {
+    solid = false;
+    colourful= true;
+    shade = false;
+});
+
+shadeButton.addEventListener('click', () => {
+    solid = false;
+    colourful= false;
+    shade = true;
+});
+
+
+
 
 
 //Event listener for our reset button which removes current rows and
@@ -73,16 +106,29 @@ resetButton.addEventListener('click', () => {
     drawOverGrid();
 })
 
+
 //Loops through our cells adding an event listener to them
 function drawOverGrid (){
     cells.forEach(function(element){
-        let shade = 0
+        let shadeGradient = 0
         element.addEventListener('mouseover', function(){
-            shade += 0.2;
-            element.style.backgroundColor = `rgba(0, 0, 0, ${shade})`;
+            //shade += 0.2;
+            //element.style.backgroundColor = `rgba(0, 0, 0, ${shade})`;
+            if(solid){
+                styleChosen = 'black';
+            } else if(colourful){
+                styleChosen = randomColour();
+            } else if(shade){
+                shadeGradient += 0.2;
+                styleChosen = `rgba(0, 0, 0, ${shadeGradient})`;
+                console.log(shade);
+            };
+            element.style.backgroundColor = styleChosen;
         })
     })
 };
+
+
 //Function to check our user row inputs are below 100
 function checkUserRowInput(userInput){
     while (userInput > 100){
@@ -91,6 +137,7 @@ function checkUserRowInput(userInput){
     }
     return userInput;
 };
+
 
 //Function to check our user column inputs are below 100
 function checkUserColumnInput(userInput){
